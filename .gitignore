@@ -4,3 +4,5 @@ lib/firebase/config.js
 node_modules/
 
 .env*
+
+firebase-debug.log
