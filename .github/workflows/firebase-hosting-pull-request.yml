@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [22]
+        node-version: [20]
     steps:
       - uses: actions/checkout@v3
       - name: Install pnpm
@@ -23,10 +23,10 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Build
-        run: pnpm build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MANAGE_GOAL }}'
           projectId: manage-goal
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
